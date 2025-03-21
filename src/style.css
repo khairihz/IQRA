@@ -1,0 +1,42 @@
+
+@import url("https://fonts.cdnfonts.com/css/trajan-pro");
+@theme {
+  --font-sans: InterVariable, sans-serif;
+  --font-serif: 'Trajan Pro Regular', serif;
+}
+
+@import "tailwindcss/preflight";
+@tailwind utilities;
+@import "tailwindcss";
+
+:root {
+  --color-primary: #1C5381;
+  --color-secondary: #BF933C;
+  --color-darkblue: #0F3759;
+  --color-lightGray: #F9FAFB;
+  --color-textgray: #6B7280;
+  --color-darkgray: #585d66;
+}
+
+@font-face {
+  font-family: 'Trajan Pro Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('public/fonts/TrajanPro-Regular.woff') format('woff');
+  }
+  
+
+  @font-face {
+  font-family: 'Trajan Pro Bold';
+  font-style: normal;
+  font-weight: bold;
+  src: url('public/fonts/TrajanPro-Bold.woff') format('woff');
+  }
+
+iframe {
+  filter: brightness(1) contrast(1.1) sepia(0) hue-rotate(2rad);
+  overflow: hidden;
+  border-radius: 16px;
+  width: 60%;
+  
+}
