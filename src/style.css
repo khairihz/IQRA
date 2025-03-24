@@ -1,13 +1,16 @@
 
-@import url("https://fonts.cdnfonts.com/css/trajan-pro");
-@theme {
-  --font-sans: InterVariable, sans-serif;
-  --font-serif: 'Trajan Pro Regular', serif;
-}
-
 @import "tailwindcss/preflight";
 @tailwind utilities;
 @import "tailwindcss";
+
+@import url("https://fonts.cdnfonts.com/css/trajan-pro");
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Cinzel:wght@400..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Parkinsans:wght@300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@theme {
+  --font-sans: InterVariable, sans-serif;
+  --font-serif: 'Trajan Pro Regular', serif;
+  --font-ar: Cairo, sans-serif;
+}
+
 
 :root {
   --color-primary: #1C5381;
@@ -22,7 +25,7 @@
   font-family: 'Trajan Pro Regular';
   font-style: normal;
   font-weight: normal;
-  src: url('public/fonts/TrajanPro-Regular.woff') format('woff');
+  src: url('/fonts/TrajanPro-Regular.woff') format('woff');
   }
   
 
@@ -30,7 +33,7 @@
   font-family: 'Trajan Pro Bold';
   font-style: normal;
   font-weight: bold;
-  src: url('public/fonts/TrajanPro-Bold.woff') format('woff');
+  src: url('/fonts/TrajanPro-Bold.woff') format('woff');
   }
 
 iframe {
@@ -39,4 +42,94 @@ iframe {
   border-radius: 16px;
   width: 60%;
   
+}
+
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-40%); } /* Move left by half, ensuring continuous loop */
+}
+
+.marquee {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.marquee-content {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.marquee-inner {
+  display: flex;
+}
+
+
+
+/*Progression bar*/
+@keyframes fillBar {
+    from { width: 0%; opacity: 1; }
+    to { width: 12.95%; opacity: 1; }
+}
+
+@keyframes moveStripes {
+    from { background-position: 0 0; }
+    to { background-position: 40px 0; } /* Move stripes to the right */
+}
+
+.progress-bar {
+    width: 0%; /* Start at 0% */
+    background: repeating-linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.2) 0px,
+        rgba(255, 255, 255, 0.2) 10px,
+        rgba(255, 255, 255, 0) 10px,
+        rgba(255, 255, 255, 0) 30px
+    ); /* Creates the stripes */
+    background-size: 40px 40px;
+    background-color: var(--color-secondary);
+    transition: width 2s ease-out;
+}
+
+.animate-progress {
+    animation: fillBar 2s ease-out forwards, moveStripes 1s linear infinite;
+}
+
+/*text animation*/
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 1.5s ease-out forwards;
+}
+
+.hidden-opacity {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.visible-opacity {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+button, 
+a {
+  transition: all 0.4s ease-in-out; /* Smooth transition */
 }
